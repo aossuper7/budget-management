@@ -2,7 +2,6 @@ package com.wanted.budgetmanagement.domain.member.entity;
 
 import com.wanted.budgetmanagement.domain.budget.entity.Budget;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

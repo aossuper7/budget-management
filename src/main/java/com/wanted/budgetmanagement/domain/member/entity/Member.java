@@ -2,6 +2,7 @@ package com.wanted.budgetmanagement.domain.member.entity;
 
 import com.wanted.budgetmanagement.domain.budget.entity.Budget;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,9 @@ import java.util.List;
 
 @Getter
 @Entity
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Member {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,13 +22,11 @@ public class Member {
     private String password;
     private String refreshToken;
 
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     List<Budget> budgetList = new ArrayList<>();
 
-    @Builder
-    public Member(String email, String password, String refreshToken) {
-        this.email = email;
-        this.password = password;
+    public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
     }
 }

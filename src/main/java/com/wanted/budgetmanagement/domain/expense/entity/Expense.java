@@ -1,5 +1,6 @@
 package com.wanted.budgetmanagement.domain.expense.entity;
 
+import com.wanted.budgetmanagement.domain.category.entity.Category;
 import com.wanted.budgetmanagement.domain.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,9 @@ public class Expense {
     @JoinColumn(name = "memberId")
     private Member member;
 
-    private String category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoryId")
+    private Category category;
     private Long money;
     private LocalDateTime time;
     private String memo;

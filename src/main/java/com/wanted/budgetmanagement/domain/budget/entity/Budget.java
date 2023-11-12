@@ -25,6 +25,5 @@ public class Budget {
     @JoinColumn(name = "categoryId")
     private Category category;
     private Long money;
-    private LocalDate start;
-    private LocalDate end;
+    private LocalDate month;
 }

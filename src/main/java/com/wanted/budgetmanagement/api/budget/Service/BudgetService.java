@@ -14,11 +14,7 @@ public class BudgetService {
 
     private final CategoryRepository categoryRepository;
 
-    public String getAllCategoryNames() {
-        List<Category> categories = categoryRepository.findAll();
-
-        return categories.stream()
-                .map(Category::getCategory)
-                .collect(Collectors.joining(", "));
+    public List<Category> getAllCategoryNames() {
+        return categoryRepository.findAll();
     }
 }

@@ -1,8 +1,9 @@
 package com.wanted.budgetmanagement.api.member;
 
-import com.wanted.budgetmanagement.api.member.dto.SignUpDto;
+import com.wanted.budgetmanagement.api.member.dto.SignInUpDto;
 import com.wanted.budgetmanagement.api.member.dto.TokenDto;
 import com.wanted.budgetmanagement.api.member.service.MemberService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +20,13 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping
-    public ResponseEntity<?> signUp(@RequestBody SignUpDto signUpDto) {
-        memberService.join(signUpDto);
+    public ResponseEntity<?> signUp(@Valid @RequestBody SignInUpDto signInUpDto) {
+        memberService.join(signInUpDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @PostMapping("/login")
+    public TokenDto login(@Valid @RequestBody SignInUpDto signInUpDto) {
+        return memberService.login(signInUpDto);
     }
 }
